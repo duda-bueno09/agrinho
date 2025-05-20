@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooperação Rural-Urbana: Desafios e Oportunidades</title>
+    <!-- Bootstrap CSS (Replit theme) -->
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS Inlined -->
+    <style>
+        /* Main styling for Rural-Urban Cooperation website */
+
+        /* General Styling */
+        :root {
+            /* Rural colors */
+            --rural-primary: #6d9f71;
+            --rural-secondary: #8b634a;
+            --rural-light: #c1dfc4;
+            
+            /* Urban colors */
+            --urban-primary: #546e7a;
+            --urban-secondary: #78909c;
+            --urban-light: #b0bec5;
+            
+            /* Accent colors */
+            --accent-info: var(--bs-info);
+            --accent-success: var(--bs-success);
+            --accent-warning: var(--bs-warning);
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-info);
+        }
+
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(9, 32, 16, 0.9), rgba(32, 58, 67, 0.9));
+        }
+
+        .rural-urban-svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .pulse-circle {
+            animation: pulse 2s infinite;
+        }
+
+        /* Introduction Section */
+        .fact-box {
+            margin-top: 2rem;
+            background-color: rgba(23, 162, 184, 0.1);
+            border-radius: 8px;
+        }
+
+        .icon-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .icon-box i {
+            font-size: 2.5rem;
+            margin: 0.5rem;
+        }
+
+        /* Gradient Background */
+        .bg-gradient {
+            background: linear-gradient(135deg, rgba(13, 51, 26, 0.7), rgba(47, 79, 89, 0.7));
+        }
+
+        /* Challenges Section - Accordion using checkbox hack */
+        .challenges-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: rgba(52, 58, 64, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-checkbox {
+            display: none;
+        }
+
+        .accordion-header {
+            display: block;
+            padding: 1rem 1.5rem;
+            background-color: rgba(33, 37, 41, 0.8);
+            color: white;
+            cursor: pointer;
+            position: relative;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(33, 37, 41, 1);
+        }
+
+        .accordion-header i:first-child {
+            margin-right: 10px;
+        }
+
+        .accordion-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.5rem;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .accordion-checkbox:checked + .accordion-header {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .accordion-checkbox:checked + .accordion-header .accordion-icon {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .accordion-checkbox:checked ~ .accordion-content {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        /* Opportunities Section */
+        .opportunity-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            background-color: rgba(52, 58, 64, 0.6);
+            border: none;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-info);
+            text-align: center;
+        }
+
+        .card-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        /* Interactive Comparison Tool */
+        .comparison-container {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .comparison-card {
+            border-radius: 8px;
+            padding: 2rem;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .rural-card {
+            background: linear-gradient(135deg, rgba(13, 51, 26, 0.7), rgba(31, 58, 34, 0.7));
+            border-left: 5px solid var(--rural-primary);
+        }
+
+        .urban-card {
+            background: linear-gradient(135deg, rgba(31, 45, 61, 0.7), rgba(47, 79, 89, 0.7));
+            border-left: 5px solid var(--urban-primary);
+        }
+
+        .comparison-title {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .comparison-list li i {
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .overlay-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            padding: 2rem;
+            pointer-events: none;
+        }
+
+        .comparison-card:hover .overlay-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .overlay-content h4 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .overlay-content ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .overlay-content ul li {
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Connection Visualization */
+        .connection-visualization {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .connection-path {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .connection-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .connection-circle.food {
+            background-color: var(--accent-success);
+        }
+
+        .connection-circle.economy {
+            background-color: var(--accent-info);
+        }
+
+        .connection-circle.culture {
+            background-color: var(--accent-warning);
+        }
+
+        .connection-label {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* Key Takeaways */
+        .key-takeaways {
+            margin-top: 3rem;
+        }
+
+        .takeaway-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .takeaway-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .takeaway-item i {
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action */
+        .cta-buttons {
+            margin-top: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #212529;
+            padding: 3rem 0;
+        }
+
+        .footer h5 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-info);
+        }
+
+        .social-links {
+            font-size: 1.5rem;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .connection-visualization {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .accordion-header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .accordion-content {
+                padding: 0 1rem;
+            }
+            
+            .accordion-checkbox:checked ~ .accordion-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+            
+            .opportunity-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        /* Pulse Animation for Connection Elements */
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+            }
+            
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+            }
+            
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+            }
+        }
+
+        /* Title Animation */
+        .animate-title {
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hover Animation for Buttons */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* SVG Animation Elements */
+        .rural-elements {
+            transition: all 0.5s ease;
+        }
+
+        .urban-elements {
+            transition: all 0.5s ease;
+        }
+
+        .connection-elements {
+            transition: all 0.5s ease;
+        }
+
+        .rural-urban-svg:hover .rural-elements {
+            transform: translateX(-10px);
+        }
+
+        .rural-urban-svg:hover .urban-elements {
+            transform: translateX(10px);
+        }
+
+        .rural-urban-svg:hover .connection-elements {
+            transform: scale(1.1);
+        }
+
+        /* Continuous Pulse Animation for Connection Visualization */
+        .connection-circle {
+            animation: pulse 2s infinite;
+        }
+
+        /* Smooth Page Transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Rural Card Hover Effect */
+        .rural-card:hover {
+            box-shadow: 0 0 20px rgba(109, 159, 113, 0.4);
+        }
+
+        /* Urban Card Hover Effect */
+        .urban-card:hover {
+            box-shadow: 0 0 20px rgba(84, 110, 122, 0.4);
+        }
+
+        /* Animated Icons */
+        .card-icon i {
+            transition: transform 0.5s ease;
+        }
+
+        .opportunity-card:hover .card-icon i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Badge Animation */
+        .badge {
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: scale(1.1);
+        }
+
+        /* Accordion Animation */
+        .accordion-item {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-checkbox:checked + .accordion-header + .accordion-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Key Takeaway Item Animation */
+        .takeaway-item i {
+            transition: transform 0.5s ease;
+        }
+
+        .takeaway-item:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Footer Link Animation */
+        .footer a {
+            position: relative;
+        }
+
+        .footer a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-info);
+            transition: width 0.3s ease;
+        }
+
+        .footer a:hover::after {
+            width: 100%;
+        }
+
+        /* Social Icon Animation */
+        .social-links a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+               <img src="past/image.png" alt="" width="80">  <i class="fas fa-city"></i> / <i class="fas fa-tree"></i> Início 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#introduction">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#challenges">Desafios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#opportunities">Oportunidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#conclusion">Conclusão</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center py-5">
+            <h1 class="display-4 fw-bold mb-4 animate-title">Cooperação Rural-Urbana</h1>
+            <h2 class="h3 mb-4 text-secondary">Desafios e Oportunidades</h2>
+            <div class="hero-image my-5">
+                <!-- SVG illustration showing rural and urban connection -->
+                <svg class="rural-urban-svg" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Rural side (left) -->
+                    <g class="rural-elements">
+                        <rect x="50" y="250" width="100" height="80" fill="#8B4513" stroke="#5D4037" stroke-width="2" /> <!-- Farmhouse -->
+                        <polygon points="50,250 150,250 100,200" fill="#A1887F" stroke="#5D4037" stroke-width="2" /> <!-- Roof -->
+                        <rect x="80" y="290" width="30" height="40" fill="#5D4037" /> <!-- Door -->
+                        <circle cx="150" cy="150" r="30" fill="#81C784" /> <!-- Tree top -->
+                        <rect x="145" y="180" width="10" height="50" fill="#5D4037" /> <!-- Tree trunk -->
+                        <circle cx="90" cy="170" r="25" fill="#81C784" /> <!-- Tree top -->
+                        <rect x="85" y="195" width="10" height="40" fill="#5D4037" /> <!-- Tree trunk -->
+                        <circle cx="200" cy="180" r="35" fill="#81C784" /> <!-- Tree top -->
+                        <rect x="195" y="215" width="10" height="60" fill="#5D4037" /> <!-- Tree trunk -->
+                        <rect x="50" y="330" width="200" height="20" fill="#8D6E63" /> <!-- Field -->
+                        <line x1="70" y1="330" x2="70" y2="350" stroke="#A1887F" stroke-width="2" /> <!-- Crop rows -->
+                        <line x1="100" y1="330" x2="100" y2="350" stroke="#A1887F" stroke-width="2" />
+                        <line x1="130" y1="330" x2="130" y2="350" stroke="#A1887F" stroke-width="2" />
+                        <line x1="160" y1="330" x2="160" y2="350" stroke="#A1887F" stroke-width="2" />
+                        <line x1="190" y1="330" x2="190" y2="350" stroke="#A1887F" stroke-width="2" />
+                        <line x1="220" y1="330" x2="220" y2="350" stroke="#A1887F" stroke-width="2" />
+                    </g>
+                    
+                    <!-- Urban side (right) -->
+                    <g class="urban-elements">
+                        <rect x="850" y="150" width="80" height="180" fill="#546E7A" stroke="#37474F" stroke-width="2" /> <!-- Skyscraper -->
+                        <rect x="950" y="180" width="70" height="150" fill="#78909C" stroke="#37474F" stroke-width="2" /> <!-- Building -->
+                        <rect x="1050" y="200" width="90" height="130" fill="#607D8B" stroke="#37474F" stroke-width="2" /> <!-- Building -->
+                        <rect x="870" y="190" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="900" y="190" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="870" y="230" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="900" y="230" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="870" y="270" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="900" y="270" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="960" y="200" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="990" y="200" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="960" y="240" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="990" y="240" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="960" y="280" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="990" y="280" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="1065" y="220" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="1095" y="220" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="1065" y="260" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="1095" y="260" width="15" height="20" fill="#B0BEC5" /> <!-- Window -->
+                        <rect x="850" y="330" width="290" height="20" fill="#455A64" /> <!-- Street -->
+                        <rect x="870" y="335" width="30" height="5" fill="#FFFFFF" /> <!-- Road marking -->
+                        <rect x="930" y="335" width="30" height="5" fill="#FFFFFF" /> <!-- Road marking -->
+                        <rect x="990" y="335" width="30" height="5" fill="#FFFFFF" /> <!-- Road marking -->
+                        <rect x="1050" y="335" width="30" height="5" fill="#FFFFFF" /> <!-- Road marking -->
+                    </g>
+                    
+                    <!-- Connection elements (middle) -->
+                    <g class="connection-elements">
+                        <path d="M300,320 C450,280 750,280 850,320" stroke="#4CAF50" stroke-width="4" fill="none" /> <!-- Green connection -->
+                        <path d="M300,300 C450,260 750,260 850,300" stroke="#2196F3" stroke-width="4" fill="none" /> <!-- Blue connection -->
+                        <path d="M300,340 C450,300 750,300 850,340" stroke="#FFC107" stroke-width="4" fill="none" /> <!-- Yellow connection -->
+                        
+                        <!-- Exchange symbols -->
+                        <circle cx="450" cy="280" r="15" fill="#4CAF50" /> <!-- Green node -->
+                        <text x="450" y="285" font-size="16" text-anchor="middle" fill="white">↔</text>
+                        
+                        <circle cx="600" cy="270" r="15" fill="#2196F3" /> <!-- Blue node -->
+                        <text x="600" y="275" font-size="16" text-anchor="middle" fill="white">↔</text>
+                        
+                        <circle cx="750" cy="290" r="15" fill="#FFC107" /> <!-- Yellow node -->
+                        <text x="750" y="295" font-size="16" text-anchor="middle" fill="white">↔</text>
+                    </g>
+
+                    <!-- Animation elements -->
+                    <g class="animation-elements">
+                        <circle class="pulse-circle" cx="600" cy="320" r="10" fill="#FF5722" />
+                    </g>
+                </svg>
+            </div>
+            <p class="lead">A integração entre o campo e a cidade é essencial para o desenvolvimento sustentável.</p>
+            <a href="#introduction" class="btn btn-outline-info btn-lg mt-3">Saiba Mais</a>
+        </div>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="card bg-dark mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Por que a Cooperação Rural-Urbana é Importante</h3>
+                            <p class="card-text">
+                                A cooperação rural-urbana permite soluções conjuntas para problemas sociais, ambientais e econômicos. 
+                                Ao promover conexões entre centros urbanos e áreas rurais, podemos criar comunidades mais 
+                                resilientes e sustentáveis.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="fact-box border border-info p-3 rounded">
+                        <h4 class="h5"><i class="fas fa-lightbulb text-info"></i> Você sabia?</h4>
+                        <p class="mb-0">
+                            Mais da metade da população mundial vive em áreas urbanas, mas todos dependemos das áreas 
+                            rurais para alimentos, recursos naturais e serviços ecológicos.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h2 class="section-title mb-4">Introdução</h2>
+                    <p>
+                        A relação entre áreas rurais e urbanas é mais importante do que nunca em nosso mundo interconectado. 
+                        Embora essas áreas tenham características distintas, sua cooperação é vital para enfrentar desafios 
+                        compartilhados e desbloquear oportunidades mútuas.
+                    </p>
+                    <p>
+                        Esta cooperação cria caminhos para o gerenciamento sustentável de recursos, desenvolvimento econômico 
+                        e bem-estar social que beneficiam ambos os tipos de comunidades.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section id="challenges" class="py-5 bg-gradient">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Desafios</h2>
+            <p class="text-center mb-5">
+                Apesar da importância da cooperação rural-urbana, vários desafios importantes tornam esta integração difícil.
+                Explore cada desafio abaixo:
+            </p>
+
+            <!-- CSS-only accordion using checkbox hack -->
+            <div class="challenges-accordion">
+                <!-- Challenge 1 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="challenge1" class="accordion-checkbox">
+                    <label for="challenge1" class="accordion-header">
+                        <i class="fas fa-balance-scale"></i> Desigualdades sociais e econômicas
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </label>
+                    <div class="accordion-content">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p>
+                                    Áreas rurais e urbanas frequentemente experimentam disparidades significativas em:
+                                </p>
+                                <ul>
+                                    <li>Acesso a instalações de saúde</li>
+                                    <li>Qualidade da educação</li>
+                                    <li>Níveis de renda e oportunidades econômicas</li>
+                                    <li>Infraestrutura básica e serviços</li>
+                                </ul>
+                                <p>
+                                    Essas desigualdades criam tensões e podem levar a padrões de desenvolvimento desequilibrados
+                                    que marginalizam ainda mais as comunidades rurais.
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="icon-box">
+                                    <i class="fas fa-hospital text-danger"></i>
+                                    <i class="fas fa-school text-warning"></i>
+                                    <i class="fas fa-dollar-sign text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="challenge2" class="accordion-checkbox">
+                    <label for="challenge2" class="accordion-header">
+                        <i class="fas fa-road"></i> Infraestrutura precária
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </label>
+                    <div class="accordion-content">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p>
+                                    Muitas áreas rurais sofrem com infraestrutura inadequada, incluindo:
+                                </p>
+                                <ul>
+                                    <li>Redes de transporte limitadas conectando aos centros urbanos</li>
+                                    <li>Conectividade digital precária ou inexistente e acesso à banda larga</li>
+                                    <li>Serviços públicos insuficientes (água, eletricidade, gestão de resíduos)</li>
+                                </ul>
+                                <p>
+                                    Essas limitações dificultam o fluxo de bens, serviços e informações entre
+                                    áreas rurais e urbanas, tornando a cooperação mais difícil.
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="icon-box">
+                                    <i class="fas fa-wifi text-warning"></i>
+                                    <i class="fas fa-bus text-primary"></i>
+                                    <i class="fas fa-lightbulb text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="challenge3" class="accordion-checkbox">
+                    <label for="challenge3" class="accordion-header">
+                        <i class="fas fa-landmark"></i> Governança fragmentada
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </label>
+                    <div class="accordion-content">
+                        <p>
+                            Fronteiras administrativas frequentemente criam desafios de governança:
+                        </p>
+                        <ul>
+                            <li>Políticas públicas desconectadas entre jurisdições rurais e urbanas</li>
+                            <li>Regulamentos e prioridades de desenvolvimento conflitantes</li>
+                            <li>Falta de mecanismos de planejamento coordenados</li>
+                            <li>Competição por recursos em vez de cooperação</li>
+                        </ul>
+                        <p>
+                            Essas questões de governança podem impedir abordagens holísticas para desafios compartilhados
+                            e prejudicar potenciais sinergias.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Challenge 4 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="challenge4" class="accordion-checkbox">
+                    <label for="challenge4" class="accordion-header">
+                        <i class="fas fa-walking"></i> Êxodo rural
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </label>
+                    <div class="accordion-content">
+                        <p>
+                            Muitas áreas rurais enfrentam declínio populacional à medida que as pessoas migram para as cidades:
+                        </p>
+                        <ul>
+                            <li>Perda de população em idade ativa e mão de obra qualificada</li>
+                            <li>Envelhecimento demográfico nas comunidades rurais</li>
+                            <li>Declínio nos serviços e negócios locais</li>
+                            <li>Perda de patrimônio cultural e conhecimento tradicional</li>
+                        </ul>
+                        <p>
+                            Este padrão de migração enfraquece as comunidades rurais enquanto pressiona a
+                            infraestrutura e serviços urbanos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Challenge 5 -->
+                <div class="accordion-item">
+                    <input type="checkbox" id="challenge5" class="accordion-checkbox">
+                    <label for="challenge5" class="accordion-header">
+                        <i class="fas fa-building"></i> Pressões sobre o uso da terra
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </label>
+                    <div class="accordion-content">
+                        <p>
+                            Demandas concorrentes por terra criam tensões:
+                        </p>
+                        <ul>
+                            <li>Expansão urbana invadindo terras agrícolas</li>
+                            <li>Conflito entre usos industriais, residenciais e agrícolas</li>
+                            <li>Degradação ambiental afetando áreas rurais e urbanas</li>
+                            <li>Especulação e aumento do valor da terra deslocando atividades tradicionais</li>
+                        </ul>
+                        <p>
+                            Sem um planejamento cuidadoso, a urbanização descontrolada ameaça áreas
+                            agrícolas produtivas e ecossistemas naturais dos quais dependem as populações
+                            urbanas e rurais.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opportunities Section -->
+    <section id="opportunities" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Oportunidades</h2>
+            <p class="text-center mb-5">
+                Apesar desses desafios, a cooperação rural-urbana oferece numerosas oportunidades de benefício mútuo.
+                Aqui estão as principais áreas onde a colaboração pode criar resultados positivos:
+            </p>
+
+            <div class="row">
+                <!-- Food Security Card -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 opportunity-card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <h3 class="card-title h4">Segurança Alimentar</h3>
+                            <p class="card-text">
+                                Cadeias curtas de abastecimento fortalecem a produção e o consumo locais, reduzindo as distâncias 
+                                percorridas pelos alimentos e aumentando a resiliência. Os mercados urbanos proporcionam demanda 
+                                estável para os produtores rurais, enquanto as áreas rurais garantem o abastecimento alimentar para 
+                                as populações urbanas.
+                            </p>
+                            <div class="mt-3 card-highlight">
+                                <span class="badge bg-success">Sistemas Alimentares Locais</span>
+                                <span class="badge bg-success">Produtos Frescos</span>
+                                <span class="badge bg-success">Menor Distância</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rural Tourism Card -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 opportunity-card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <h3 class="card-title h4">Turismo Rural</h3>
+                            <p class="card-text">
+                                O turismo cria oportunidades econômicas para áreas rurais enquanto preserva o patrimônio cultural.
+                                Os residentes urbanos se beneficiam de espaços recreativos e experiências autênticas, enquanto as
+                                comunidades rurais ganham fontes de renda além da agricultura.
+                            </p>
+                            <div class="mt-3 card-highlight">
+                                <span class="badge bg-info">Preservação Cultural</span>
+                                <span class="badge bg-info">Renda Diversificada</span>
+                                <span class="badge bg-info">Recreação</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sustainable Solutions Card -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 opportunity-card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <h3 class="card-title h4">Soluções Sustentáveis Conjuntas</h3>
+                            <p class="card-text">
+                                Abordagens colaborativas para gestão de resíduos, energia renovável e compostagem
+                                beneficiam áreas rurais e urbanas. Infraestrutura compartilhada e iniciativas de economia 
+                                circular criam eficiências e reduzem o impacto ambiental.
+                            </p>
+                            <div class="mt-3 card-highlight">
+                                <span class="badge bg-warning">Gestão de Resíduos</span>
+                                <span class="badge bg-warning">Energia Renovável</span>
+                                <span class="badge bg-warning">Economia Circular</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Innovation Card -->
+                <div class="col-md-6 col-lg-6 mb-4">
+                    <div class="card h-100 opportunity-card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="card-title h4">Inovação e Educação</h3>
+                            <p class="card-text">
+                                A troca de conhecimentos entre universidades, produtores e governos impulsiona a inovação.
+                                Áreas rurais fornecem laboratórios para práticas sustentáveis, enquanto centros urbanos oferecem
+                                capacidades de pesquisa e instituições educacionais. Tecnologias digitais podem superar
+                                distâncias físicas e criar novas oportunidades de colaboração.
+                            </p>
+                            <div class="mt-3 card-highlight">
+                                <span class="badge bg-primary">Transferência de Conhecimento</span>
+                                <span class="badge bg-primary">Pesquisa</span>
+                                <span class="badge bg-primary">Educação</span>
+                                <span class="badge bg-primary">Tecnologia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Integrated Planning Card -->
+                <div class="col-md-6 col-lg-6 mb-4">
+                    <div class="card h-100 opportunity-card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-map"></i>
+                            </div>
+                            <h3 class="card-title h4">Planejamento Integrado</h3>
+                            <p class="card-text">
+                                Políticas que consideram o território como um todo promovem equilíbrio e sustentabilidade.
+                                Abordagens coordenadas para transporte, habitação, desenvolvimento econômico e
+                                proteção ambiental podem criar cenários de ganho mútuo. Processos de planejamento com múltiplos
+                                participantes garantem que diversas perspectivas sejam consideradas.
+                            </p>
+                            <div class="mt-3 card-highlight">
+                                <span class="badge bg-danger">Políticas Coordenadas</span>
+                                <span class="badge bg-danger">Planejamento Regional</span>
+                                <span class="badge bg-danger">Desenvolvimento Sustentável</span>
+                                <span class="badge bg-danger">Governança Inclusiva</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Comparison Tool -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Comparação Interativa</h2>
+            <p class="text-center mb-4">Compare características rurais e urbanas passando o mouse sobre cada lado</p>
+            
+            <div class="comparison-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="comparison-card rural-card">
+                            <h3 class="comparison-title">Áreas Rurais</h3>
+                            <ul class="comparison-list">
+                                <li><i class="fas fa-leaf"></i> Recursos naturais e agricultura</li>
+                                <li><i class="fas fa-users"></i> Menor densidade populacional</li>
+                                <li><i class="fas fa-tree"></i> Mais espaços verdes e biodiversidade</li>
+                                <li><i class="fas fa-handshake"></i> Fortes laços comunitários</li>
+                                <li><i class="fas fa-home"></i> Habitação mais acessível</li>
+                            </ul>
+                            <div class="overlay-content">
+                                <h4>Contribuições Rurais</h4>
+                                <ul>
+                                    <li>Produção de alimentos</li>
+                                    <li>Recursos naturais</li>
+                                    <li>Serviços ecossistêmicos</li>
+                                    <li>Patrimônio cultural</li>
+                                    <li>Preservação da biodiversidade</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="comparison-card urban-card">
+                            <h3 class="comparison-title">Áreas Urbanas</h3>
+                            <ul class="comparison-list">
+                                <li><i class="fas fa-building"></i> Centros econômicos e mercados</li>
+                                <li><i class="fas fa-graduation-cap"></i> Instituições educacionais</li>
+                                <li><i class="fas fa-hospital"></i> Instalações de saúde</li>
+                                <li><i class="fas fa-subway"></i> Redes de transporte</li>
+                                <li><i class="fas fa-wifi"></i> Inovação tecnológica</li>
+                            </ul>
+                            <div class="overlay-content">
+                                <h4>Contribuições Urbanas</h4>
+                                <ul>
+                                    <li>Mercados para produtos rurais</li>
+                                    <li>Inovação e tecnologia</li>
+                                    <li>Serviços especializados</li>
+                                    <li>Oportunidades educacionais</li>
+                                    <li>Conectividade global</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle connection visualization -->
+                <div class="connection-visualization">
+                    <div class="connection-path">
+                        <div class="connection-circle food"></div>
+                        <div class="connection-label">Alimentos & Recursos</div>
+                    </div>
+                    <div class="connection-path">
+                        <div class="connection-circle economy"></div>
+                        <div class="connection-label">Economia</div>
+                    </div>
+                    <div class="connection-path">
+                        <div class="connection-circle culture"></div>
+                        <div class="connection-label">Cultura & Educação</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section id="conclusion" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title mb-4">Conclusão</h2>
+                    <p class="lead">
+                        Superar desafios requer diálogo, políticas integradas e valorização do potencial local.
+                        A cooperação rural-urbana é fundamental para um futuro mais justo e sustentável.
+                    </p>
+                    <div class="key-takeaways mt-5">
+                        <h3 class="h4 mb-4">Principais Conclusões</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="takeaway-item">
+                                    <i class="fas fa-comments fa-2x text-info"></i>
+                                    <p>Promover diálogo entre partes interessadas rurais e urbanas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="takeaway-item">
+                                    <i class="fas fa-handshake fa-2x text-success"></i>
+                                    <p>Construir parcerias além das fronteiras geográficas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="takeaway-item">
+                                    <i class="fas fa-balance-scale fa-2x text-warning"></i>
+                                    <p>Criar políticas que equilibrem as necessidades de todas as comunidades</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <p>
+                            Ao fortalecer as conexões rural-urbanas, podemos construir comunidades mais resilientes, 
+                            sustentáveis e equitativas para todos.
+                        </p>
+                        <div class="cta-buttons mt-4">
+                            <a href="#introduction" class="btn btn-outline-info me-2">Saiba Mais</a>
+                            <a href="#" class="btn btn-outline-success">Participe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Sobre</h5>
+                    <p>
+                        Este site educacional explora os desafios e oportunidades da cooperação e
+                        integração rural-urbana para o desenvolvimento sustentável.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fas fa-book me-2"></i>Artigos de Pesquisa</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt me-2"></i>Estudos de Caso</a></li>
+                        <li><a href="#"><i class="fas fa-chart-bar me-2"></i>Dados e Estatísticas</a></li>
+                        <li><a href="#"><i class="fas fa-images me-2"></i>Galeria de Imagens</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Conecte-se</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fas fa-envelope me-2"></i>Contate-nos</a></li>
+                        <li><a href="#"><i class="fas fa-user-plus me-2"></i>Assine a Newsletter</a></li>
+                    </ul>
+                    <div class="social-links mt-3">
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Iniciativa de Cooperação Rural-Urbana - Projeto Agrinho 2025 - Maria Bueno.</p>
+                <p class="mb-0">Colegio Estadual Padre Claudio Morelli</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
