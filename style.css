@@ -1,0 +1,565 @@
+  :root {
+            /* Rural colors */
+            --rural-primary: #6d9f71;
+            --rural-secondary: #8b634a;
+            --rural-light: #c1dfc4;
+            
+            /* Urban colors */
+            --urban-primary: #546e7a;
+            --urban-secondary: #78909c;
+            --urban-light: #b0bec5;
+            
+            /* Accent colors */
+            --accent-info: var(--bs-info);
+            --accent-success: var(--bs-success);
+            --accent-warning: var(--bs-warning);
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-info);
+        }
+
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(9, 32, 16, 0.9), rgba(32, 58, 67, 0.9));
+        }
+
+        .rural-urban-svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .pulse-circle {
+            animation: pulse 2s infinite;
+        }
+
+        /* Introduction Section */
+        .fact-box {
+            margin-top: 2rem;
+            background-color: rgba(23, 162, 184, 0.1);
+            border-radius: 8px;
+        }
+
+        .icon-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .icon-box i {
+            font-size: 2.5rem;
+            margin: 0.5rem;
+        }
+
+        /* Gradient Background */
+        .bg-gradient {
+            background: linear-gradient(135deg, rgba(13, 51, 26, 0.7), rgba(47, 79, 89, 0.7));
+        }
+
+        /* Challenges Section - Accordion using checkbox hack */
+        .challenges-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: rgba(52, 58, 64, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-checkbox {
+            display: none;
+        }
+
+        .accordion-header {
+            display: block;
+            padding: 1rem 1.5rem;
+            background-color: rgba(33, 37, 41, 0.8);
+            color: white;
+            cursor: pointer;
+            position: relative;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(33, 37, 41, 1);
+        }
+
+        .accordion-header i:first-child {
+            margin-right: 10px;
+        }
+
+        .accordion-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.5rem;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .accordion-checkbox:checked + .accordion-header {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .accordion-checkbox:checked + .accordion-header .accordion-icon {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .accordion-checkbox:checked ~ .accordion-content {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        /* Opportunities Section */
+        .opportunity-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            background-color: rgba(52, 58, 64, 0.6);
+            border: none;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-info);
+            text-align: center;
+        }
+
+        .card-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        /* Interactive Comparison Tool */
+        .comparison-container {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .comparison-card {
+            border-radius: 8px;
+            padding: 2rem;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .rural-card {
+            background: linear-gradient(135deg, rgba(13, 51, 26, 0.7), rgba(31, 58, 34, 0.7));
+            border-left: 5px solid var(--rural-primary);
+        }
+
+        .urban-card {
+            background: linear-gradient(135deg, rgba(31, 45, 61, 0.7), rgba(47, 79, 89, 0.7));
+            border-left: 5px solid var(--urban-primary);
+        }
+
+        .comparison-title {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .comparison-list li i {
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .overlay-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            padding: 2rem;
+            pointer-events: none;
+        }
+
+        .comparison-card:hover .overlay-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .overlay-content h4 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .overlay-content ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .overlay-content ul li {
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Connection Visualization */
+        .connection-visualization {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .connection-path {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .connection-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .connection-circle.food {
+            background-color: var(--accent-success);
+        }
+
+        .connection-circle.economy {
+            background-color: var(--accent-info);
+        }
+
+        .connection-circle.culture {
+            background-color: var(--accent-warning);
+        }
+
+        .connection-label {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* Key Takeaways */
+        .key-takeaways {
+            margin-top: 3rem;
+        }
+
+        .takeaway-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .takeaway-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .takeaway-item i {
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action */
+        .cta-buttons {
+            margin-top: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #212529;
+            padding: 3rem 0;
+        }
+
+        .footer h5 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-info);
+        }
+
+        .social-links {
+            font-size: 1.5rem;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .connection-visualization {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .accordion-header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .accordion-content {
+                padding: 0 1rem;
+            }
+            
+            .accordion-checkbox:checked ~ .accordion-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+            
+            .opportunity-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        /* Pulse Animation for Connection Elements */
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+            }
+            
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+            }
+            
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+            }
+        }
+
+        /* Title Animation */
+        .animate-title {
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hover Animation for Buttons */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* SVG Animation Elements */
+        .rural-elements {
+            transition: all 0.5s ease;
+        }
+
+        .urban-elements {
+            transition: all 0.5s ease;
+        }
+
+        .connection-elements {
+            transition: all 0.5s ease;
+        }
+
+        .rural-urban-svg:hover .rural-elements {
+            transform: translateX(-10px);
+        }
+
+        .rural-urban-svg:hover .urban-elements {
+            transform: translateX(10px);
+        }
+
+        .rural-urban-svg:hover .connection-elements {
+            transform: scale(1.1);
+        }
+
+        /* Continuous Pulse Animation for Connection Visualization */
+        .connection-circle {
+            animation: pulse 2s infinite;
+        }
+
+        /* Smooth Page Transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Rural Card Hover Effect */
+        .rural-card:hover {
+            box-shadow: 0 0 20px rgba(109, 159, 113, 0.4);
+        }
+
+        /* Urban Card Hover Effect */
+        .urban-card:hover {
+            box-shadow: 0 0 20px rgba(84, 110, 122, 0.4);
+        }
+
+        /* Animated Icons */
+        .card-icon i {
+            transition: transform 0.5s ease;
+        }
+
+        .opportunity-card:hover .card-icon i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Badge Animation */
+        .badge {
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: scale(1.1);
+        }
+
+        /* Accordion Animation */
+        .accordion-item {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-checkbox:checked + .accordion-header + .accordion-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Key Takeaway Item Animation */
+        .takeaway-item i {
+            transition: transform 0.5s ease;
+        }
+
+        .takeaway-item:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Footer Link Animation */
+        .footer a {
+            position: relative;
+        }
+
+        .footer a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-info);
+            transition: width 0.3s ease;
+        }
+
+        .footer a:hover::after {
+            width: 100%;
+        }
+
+        /* Social Icon Animation */
+        .social-links a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
